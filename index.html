@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>星杯酒館・特別版</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div class="version">網頁測試版・2026/10/01 15:10</div>
+      <h1>星杯酒館・特別版</h1>
+      <p>八席常駐，三次禁令，一杯酒決定最後的陣容。</p>
+    </header>
+
+    <section id="home" class="panel setup">
+      <h2>進入酒館</h2>
+      <label>你的隊伍名稱
+        <input id="teamName" maxlength="30" value="我的隊伍" placeholder="30 字內">
+      </label>
+      <label>對戰方式
+        <select id="battleType">
+          <option value="ai">人機對戰（隨機紅藍方）</option>
+          <option value="local">雙人同機</option>
+        </select>
+      </label>
+      <div class="rules">
+        <b>特別規則</b>
+        <span>開場 8 名角色</span><span>雙方各 3 次禁角額度</span><span>禁角固定 10 秒</span><span>禁角／選角後補回 8 名</span>
+      </div>
+      <button id="start" class="primary">確認，進入酒館</button>
+    </section>
+
+    <section id="game" class="panel hidden">
+      <div class="topline">
+        <div><b id="matchTitle"></b><small id="sideHint"></small></div>
+        <button id="quit" class="ghost">回到首頁</button>
+      </div>
+
+      <div class="quota-row">
+        <div class="quota red"><b id="redName"></b><span>剩餘禁角 <strong id="redQuota">3</strong> 次</span></div>
+        <div class="quota blue"><b id="blueName"></b><span>剩餘禁角 <strong id="blueQuota">3</strong> 次</span></div>
+      </div>
+
+      <div id="turnBox" class="turn-box">
+        <div id="turnText" class="turn-text"></div>
+        <div id="timer" class="timer"></div>
+      </div>
+
+      <div class="actions">
+        <button id="confirm" class="primary" disabled>確定</button>
+        <button id="skip" class="ghost">跳過，不禁角色</button>
+      </div>
+
+      <h2 class="section-title">酒館可選角色 <span id="poolCount">8 / 8</span></h2>
+      <div id="pool" class="pool"></div>
+
+      <h2 class="section-title">選角順序</h2>
+      <div id="pickOrder" class="pick-order" aria-label="選角順序"></div>
+      <div id="seats" class="seats"></div>
+
+      <details class="history"><summary>查看禁選紀錄</summary><ol id="history"></ol></details>
+    </section>
+
+    <section id="placement" class="panel hidden placement">
+      <div class="topline"><div><b>秘密安排座位</b><small>雙方完成後才會同時公開</small></div><button id="placementHome" class="ghost">回到首頁</button></div>
+      <div id="handoff" class="handoff">
+        <h2 id="handoffTitle"></h2>
+        <p>請確認只有該方玩家能看到畫面。</p>
+        <button id="readyPlace" class="primary">我準備好了</button>
+      </div>
+      <div id="placementBoard" class="hidden">
+        <h2 id="placementTitle" class="section-title"></h2>
+        <p class="placement-help">先點選一名角色，再點圓桌上己方的座位；點已放置的角色可取回重排。</p>
+        <div id="placementTray" class="placement-tray"></div>
+        <div id="placementTable"></div>
+        <div class="actions"><button id="confirmPlacement" class="primary" disabled>確認座位配置</button></div>
+      </div>
+    </section>
+
+    <section id="result" class="panel hidden result">
+      <div class="result-kicker">酒館選角完成</div>
+      <h2>雙方陣容同時公開</h2>
+      <div id="resultTable"></div>
+      <div class="result-lower">
+        <section class="result-side red"><h3>紅方選角</h3><div id="redResultList"></div></section>
+        <section class="matrix-wrap"><h3>選角矩陣</h3><div id="draftMatrix" class="draft-matrix"></div></section>
+        <section class="result-side blue"><h3>藍方選角</h3><div id="blueResultList"></div></section>
+      </div>
+      <div class="matrix-legend"><span class="red-ban">紅方禁角</span><span class="blue-ban">藍方禁角</span><span class="red-pick">紅方選角</span><span class="blue-pick">藍方選角</span></div>
+      <div class="result-actions"><button id="saveImage" class="primary">儲存圖片</button><button id="again" class="ghost">再來一場</button><button id="resultHome" class="ghost">回到首頁</button></div>
+    </section>
+  </main>
+  <div id="imageModal" class="image-modal hidden"><div class="image-dialog"><button id="closeImage" class="image-close">×</button><h2>長按圖片即可儲存</h2><img id="resultImage" alt="本場酒館選角結果"><a id="downloadImage" class="primary download-link" download="星杯酒館選角結果.png">下載圖片</a></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
