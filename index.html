@@ -9,7 +9,7 @@
 <body>
   <main class="app">
     <header>
-      <div class="version">網頁測試版・2026/10/01 15:10</div>
+      <div class="version">網頁測試版・2026/10/06 14:45</div>
       <h1>星杯酒館・特別版</h1>
       <p>八席常駐，三次禁令，一杯酒決定最後的陣容。</p>
     </header>
@@ -27,7 +27,7 @@
       </label>
       <div class="rules">
         <b>特別規則</b>
-        <span>開場 8 名角色</span><span>雙方各 3 次禁角額度</span><span>禁角固定 10 秒</span><span>禁角／選角後補回 8 名</span>
+        <span>開場 8 名角色</span><span>雙方各 3 次一般 Ban</span><span>各有 1 次 Insert Ban</span><span>各有 1 次 RE 機會</span>
       </div>
       <button id="start" class="primary">確認，進入酒館</button>
     </section>
@@ -39,8 +39,8 @@
       </div>
 
       <div class="quota-row">
-        <div class="quota red"><b id="redName"></b><span>剩餘禁角 <strong id="redQuota">3</strong> 次</span></div>
-        <div class="quota blue"><b id="blueName"></b><span>剩餘禁角 <strong id="blueQuota">3</strong> 次</span></div>
+        <div class="quota red"><b id="redName"></b><span>一般 Ban <strong id="redQuota">3</strong> 次<small id="redSpecial"></small></span></div>
+        <div class="quota blue"><b id="blueName"></b><span>一般 Ban <strong id="blueQuota">3</strong> 次<small id="blueSpecial"></small></span></div>
       </div>
 
       <div id="turnBox" class="turn-box">
